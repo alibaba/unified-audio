@@ -15,7 +15,7 @@ In addition to the frameworks for specific tasks, **Unified-Audio** also provide
 ## key Works
 
 ### UniSE
-UniSE: A Unified Framework for Decoder-Only Autoregressive LM-Based Speech Enhancement
+[UniSE](https://github.com/alibaba/unified-audio/tree/main/UniSE): A Unified Framework for Decoder-Only Autoregressive LM-Based Speech Enhancement
 supported tasks: **SR**, **TSE**, **SS**
 
 
