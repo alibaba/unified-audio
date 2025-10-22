@@ -1,2 +1,2 @@
-# Unified-Audio: An Open-Source Toolkit Unifying Audio Processing and Generation
+# Unified-Audio: An Open-Source Project to Unify Audio Processing and Generation
 
