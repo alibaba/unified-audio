@@ -15,9 +15,9 @@ In addition to the frameworks for specific audio tasks, **Unified-Audio** also p
 
 
 ## 🚀 News
-- **2025/09/22**: We release [***UniSE***](https://github.com/hyyan2k/UniSE), a foundation model for unified speech generation. The system supports target speaker extraction, universal speech enhancement.[***demo***](https://hyyan2k.github.io/UniSE/), Code will comming soon.
+- **2025/09/22**: We release [***UniSE***](https://github.com/hyyan2k/UniSE), a foundation model for unified speech generation. The system supports target speaker extraction, universal speech enhancement.[***demo***](https://hyyan2k.github.io/UniSE/), [***Paper***][![arXiv](https://img.shields.io/badge/arXiv-Paper-COLOR.svg)](https://arxiv.org/abs/2510.20441),Code will comming soon. 
 
 ## key Works
 ### UniSE
-[UniSE](https://github.com/alibaba/unified-audio/tree/main/UniSE): A Unified Framework for Decoder-Only Autoregressive LM-Based Speech Enhancement
+[UniSE](https://github.com/alibaba/unified-audio/tree/main/UniSE): A Unified Framework for Decoder-Only Autoregressive LM-Based Speech Enhancement[![arXiv](https://img.shields.io/badge/arXiv-Paper-COLOR.svg)](https://arxiv.org/abs/2510.20441) 
 supported tasks: **SR**, **TSE**, **SS**
