@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- AI Icon (for arXiv) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tmnavidz/arxiv-icon@latest/css/ai.min.css">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UniTok-Audio: A Unified Audio Generation Framework</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --bg-light: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-gray: #7f8c8d;
+            --border: #e0e0e0;
+            --shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        /* Title & Authors */
+        .title {
+            text-align: center;
+            font-size: 2.4em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .links {
+            text-align: center;
+            margin: 15px 0;
+            font-size: 1.1em;
+        }
+
+        .links a {
+            margin: 0 16px;
+            padding: 8px 16px;
+            background: var(--secondary-color);
+            color: white !important;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .links a:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .authors p {
+            margin: 8px 0;
+            font-size: 1.1em;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .institution {
+            font-size: 1em;
+            color: var(--text-gray);
+            text-align: center;
+            margin: 10px 0 30px;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 1.6em;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .abstract-content {
+            padding: 25px;
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 8px;
+            font-size: 1.15em;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        /* Figures */
+        .figure-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .figure {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .figure:hover {
+            transform: scale(1.02);
+        }
+
+        .figure-caption {
+            font-size: 0.95em;
+            color: var(--text-gray);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Audio Tables */
+        .audio-demos {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        .audio-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .audio-table th {
+            background-color: #f1f3f5;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 14px 12px;
+            text-align: center;
+            font-size: 1.1em;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .audio-table td {
+            padding: 14px 12px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+
+        .audio-table tr:hover {
+            background-color: #f8f9ff;
+        }
+
+        audio {
+            width: 250px;
+            height: 40px;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .audio-name {
+            font-weight: 600;
+            color: var(--text-dark);
+            text-align: left;
+            padding: 14px;
+            background: #fafafa;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+
+            .title {
+                font-size: 2em;
+            }
+
+            .links a {
+                display: block;
+                margin: 10px auto;
+                width: fit-content;
+            }
+
+            audio {
+                width: 100%;
+            }
+
+            .audio-table {
+                font-size: 0.95em;
+            }
+
+            .abstract-content {
+                font-size: 1em;
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <section class="hero">
+        <div class="hero-body">
+          <div class="container is-max-desktop has-text-centered">
+            <!-- Title -->
+            <h1 class="title is-1 publication-title">
+              UniTok-Audio: A Unified Audio Generation Framework Via Universal Discrete Token
+            </h1>
+      
+            <!-- Authors -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="#">Chengwei Liu†</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="#">Haoyin Yan†</a><sup>1,2</sup>,</span>
+              <span class="author-block">
+                <a href="#">Shaofei Xue*</a><sup>1,2</sup>,</span>
+              <span class="author-block">
+                <a href="#">Xiaotao Liang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="#">Yinghao Liu</a><sup>1,2</sup>
+              <span class="author-block">
+                <a href="#">Zheng Xue</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="#">Boyang Zhou</a><sup>1,3</sup>,</span>
+              </span>
+            </div>
+      
+            <!-- Institutions -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Intelligent Connectivity, Alibaba Group</span>,
+              <span class="author-block"><sup>2</sup>Tongyi Lab, Alibaba Group</span>
+              <span class="author-block"><sup>3</sup>Zhejiang University</span>
+            </div>
+      
+            <!-- Corresponding Note -->
+            <div class="is-size-6" style="margin-top: 6px;">
+              <em>†Equal Contribution: Haoyin Yan, Chengwei Liu</em>,
+              <em>*Corresponding author: Shaofei Xue</em>
+            </div>
+      
+            <!-- Links -->
+            <div class="publication-links" style="margin-top: 18px;">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/your-paper-id"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/alibaba/unified-audio"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/alibaba/unified-audio"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                    <i class="fas fa-rocket"></i>
+                  </span>
+                  <span>Demo</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+    <!-- Abstract -->
+    <div class="section">
+        <h2 class="section-title">Abstract</h2>
+        <div class="abstract-content">
+            Generative modeling has recently achieved remarkable success across image, video, and audio domains, demonstrating powerful capabilities for unified representation learning. In contrast, the current audio generative models are still struggling regarding audio quality and task generalization. This fragmentation leads to redundant engineering effort, inconsistent performance, and limited extensibility.
+            To address these limitations, we propose UniTok-Audio, a scalable and extensible framework for unified audio generation and transformation tasks.
+            UniTok-Audio integrates three core components: a HuBERT-based encoder for robust acoustic feature extraction, a LLaMA-structured language model for autoregressive token prediction, and a novel universal audio codec, termed H-Codec, for high-fidelity waveform reconstruction.
+            Firstly, H-Codec incorporates semantic features from a pre-trained semantic encoder before the Residual Vector Quantization (RVQ) stage and introduces a semantic reconstruction loss after RVQ.
+            Furthermore, to address the acoustic inconsistency caused by the information loss inherent in discrete tokens, we replace the discrete token inputs with continuous representations extracted from the WavLM encoder and predict speech tokens obtained from H-codec.
+            UniTok-Audio supports a wide range of intra- and cross-lingual audio processing tasks under a single architecture,
+            including universal speech enhancement (USE), target speaker extraction (TSE), Speech Separation (SS), voice conversion (VC), and language-queried source separation (LASS).
+            Experiments show that UniTok-Audio, trained on 100,000 hours of diverse audio data, outperforms existing state-of-the-art (SOTA) models across multiple benchmarks. To foster future research, we will open-source our codebase.
+        </div>
+    </div>
+
+    <!-- UniTok-Audio Architecture -->
+    <div class="section">
+        <h2 class="section-title">UniTok-Audio</h2>
+        <div class="figure-container">
+            <img class="figure" src="./Figure/UniTok_audio_05.png" alt="UniTok-Audio Architecture">
+            <p class="figure-caption">Fig. 1: Overall architecture of UniTok-Audio, where the H-Codec Encoder is only used to generate label tokens during training and excluded during inference.</p>
+        </div>
+        <p style="margin-top: 20px; text-align: justify;">
+            UniTok-Audio is a unified discrete-token-based audio generation framework that consists of four parts: (1) a WavLM or HuBERT audio encoder, (2) a CLAP text encoder, (3) a LLaMA-based language model, and (4) a novel H-Codec decoder. The WavLM and HuBERT encoders extract continuous speech features from audio. The LLaMA-based LM takes these features as input and predicts discrete speech tokens generated by H-Codec in an autoregressive manner. Finally, the H-Codec decoder reconstructs enhanced speech from predicted tokens.
+            Guided by task identifiers and timestep embeddings, the LM processes latent sequences using cross-attention to generate task-specific outputs.
+        </p>
+    </div>
+
+    <!-- H-Codec -->
+    <div class="section">
+        <h2 class="section-title">H-Codec</h2>
+        <div class="figure-container">
+            <img class="figure" src="./Figure/H-CODEC_ARC.JPG" alt="H-Codec Architecture">
+            <p class="figure-caption">Fig. 2: Overall architecture of H-Codec.</p>
+        </div>
+        <p style="margin-top: 20px; text-align: justify;">
+            H-Codec features two encoding streams: a self-supervised learning (SSL) stream and a waveform stream. The SSL stream captures semantic-rich information and injects it into the first-layer codec tokens via direct encoding from HuBERT/WavLM features. The waveform stream uses a proven DAC-like framework to encode and decode high-quality audio. Both streams are downsampled to achieve a low frame rate of 25 Hz.
+            During training, both streams are used to obtain target tokens. During inference, only the decoder is active to generate high-fidelity audio.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">H-Codec Result</h2>
+        <div class="figure-container">
+            <img class="figure" src="./Figure/H-Codec_result.png" alt="H-Codec Architecture">
+            <p class="figure-caption">Fig. 3: Speech Reconstruction and Semantic Performance.</p>
+        </div>
+        <p style="margin-top: 20px; text-align: justify;">
+            H-Codec achieves the best performance at a token rate of 50 for most metrics. Moreover, its UTMOS score closely matches that of the ground truth, indicating that the reconstructed audio faithfully preserves the original speech quality. We also observe that certain models exceed the ground truth in UTMOS when operating at low token rates. We suspect this occurs because, under limited token constraints, the decoder behaves partly as a generative model—yielding plausible speech output but the alignment with the input was less precise..
+        </p>
+    </div>
+
+    <!-- Speech Restoration (SR) -->
+    <div class="section">
+        <h2 class="section-title">Speech Restoration (SR)</h2>
+        <div class="audio-demos">
+            <table class="audio-table">
+                <thead>
+                    <tr>
+                        <th>Clean</th>
+                        <th>Noisy</th>
+                        <th>Enhanced</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><audio controls><source src="./AudioSamples/SR/clean/1.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/SR/noisy/1.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/SR/enhanced/1.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td><audio controls><source src="./AudioSamples/SR/clean/2.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/SR/noisy/2.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/SR/enhanced/2.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td><audio controls><source src="./AudioSamples/SR/clean/3.flac" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/SR/noisy/3.flac" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/SR/enhanced/3.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td><audio controls><source src="./AudioSamples/SR/clean/4.flac" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/SR/noisy/4.flac" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/SR/enhanced/4.wav" type="audio/wav"></audio></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Target Speech Extraction (TSE) -->
+    <div class="section">
+        <h2 class="section-title">Target Speech Extraction (TSE)</h2>
+        <div class="audio-demos">
+            <table class="audio-table">
+                <thead>
+                    <tr>
+                        <th>Target</th>
+                        <th>Mixture</th>
+                        <th>Reference</th>
+                        <th>Enhanced</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><audio controls><source src="./AudioSamples/TSE/clean/1.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/TSE/noisy/1.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/TSE/aux/1.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/TSE/enhanced/1.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td><audio controls><source src="./AudioSamples/TSE/clean/2.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/TSE/noisy/2.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/TSE/aux/2.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/TSE/enhanced/2.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td><audio controls><source src="./AudioSamples/TSE/clean/3.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/TSE/noisy/3.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/TSE/aux/3.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/TSE/enhanced/3.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td><audio controls><source src="./AudioSamples/TSE/clean/4.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/TSE/noisy/4.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/TSE/aux/4.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/TSE/enhanced/4.wav" type="audio/wav"></audio></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Speech Separation (SS) -->
+    <div class="section">
+        <h2 class="section-title">Speech Separation (SS)</h2>
+        <div class="audio-demos">
+            <table class="audio-table">
+                <thead>
+                    <tr>
+                        <th>Mixture</th>
+                        <th>Speaker 1</th>
+                        <th>Speaker 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><audio controls><source src="./AudioSamples/SS/noisy/1.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/SS/s1/1.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/SS/s2/1.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td><audio controls><source src="./AudioSamples/SS/noisy/2.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/SS/s1/2.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/SS/s2/2.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td><audio controls><source src="./AudioSamples/SS/noisy/3.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/SS/s1/3.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/SS/s2/3.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td><audio controls><source src="./AudioSamples/SS/noisy/4.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/SS/s1/4.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/SS/s2/4.wav" type="audio/wav"></audio></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Voice Conversion (VC) -->
+    <div class="section">
+        <h2 class="section-title">Voice Conversion (VC)</h2>
+        <div class="audio-demos">
+            <table class="audio-table">
+                <thead>
+                    <tr>
+                        <th>Source</th>
+                        <th>Reference</th>
+                        <th>Converted</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><audio controls><source src="./AudioSamples/VC/source/1.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/VC/ref/1.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/VC/converted/1.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td><audio controls><source src="./AudioSamples/VC/source/2.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/VC/ref/2.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/VC/converted/2.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td><audio controls><source src="./AudioSamples/VC/source/3.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/VC/ref/3.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/VC/converted/3.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td><audio controls><source src="./AudioSamples/VC/source/4.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/VC/ref/4.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/VC/converted/4.wav" type="audio/wav"></audio></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Language-Queried Audio Source Separation (LASS) -->
+    <div class="section">
+        <h2 class="section-title">Language-Queried Audio Source Separation (LASS)</h2>
+        <div class="audio-demos">
+            <table class="audio-table">
+                <thead>
+                    <tr>
+                        <th>Text Query</th>
+                        <th>Source</th>
+                        <th>Converted</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>the crowd is cheering and giving applause</td>
+                        <td><audio controls><source src="./AudioSamples/LASS/source/test-real-case-16.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/LASS/convert/test-real-case-16_convert.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td>someone is beating the drum continuously</td>
+                        <td><audio controls><source src="./AudioSamples/LASS/source/test-real-case-68.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/LASS/convert/test-real-case-68_convert.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td>Someone is typing on a keyboard</td>
+                        <td><audio controls><source src="./AudioSamples/LASS/source/SeparatebyText_Y0z97A0GYhAQ_YFSBDt4ENLqE.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/LASS/convert/SeparatebyText_Y0z97A0GYhAQ_YFSBDt4ENLqE_convert.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td>a person is pressing the shutter button of the camera to check something</td>
+                        <td><audio controls><source src="./AudioSamples/LASS/source/SeparatebyText_Y0z97A0GYhAQ_YFSBDt4ENLqE.wav" type="audio/wav"></audio></td>
+                        <td><audio controls><source src="./AudioSamples/LASS/convert/SeparatebyText_Y0z97A0GYhAQ_YFSBDt4ENLqE_convert.wav" type="audio/wav"></audio></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
