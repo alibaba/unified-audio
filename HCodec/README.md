@@ -1,0 +1,1 @@
+# HCodec: HCodec: An Audio Tokenizer and Detokenizer Solution Designed for Audio Large Language Models
