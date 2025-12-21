@@ -26,8 +26,7 @@
 
 | Task | Full Name | Status | Description |
 |------|-----------|--------|-------------|
-| **SR** | Speech Restoration | ✅ Stable | Recover clean speech from corrupted inputs (e.g., noise, reverb, packet loss) |
-| **SE** | Speech Enhancement | ✅ Stable | General-purpose denoising and clarity improvement |
+| **SR** | Speech Restoration | ✅ Stable | General-purpose denoising and clarity improvemen (e.g., noise, reverb, packet loss) |
 | **TSE** | Target Speaker Extraction | ✅ Stable | Extract target speaker using reference enrollment audio |
 | **SS** | Speech Separation | ✅ Stable | Separate mixed speakers or sound sources |
 | **AEC** | Acoustic Echo Cancellation | ⏳ Developing | Coming soon in next release |
