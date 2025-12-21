@@ -10,7 +10,6 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2510.20441"><img src="QuarkAudio-UniSE.png" width="70%" /></a>
 </p>
-![UniSE](QuarkAudio-UniSE.png)
 > 🔊 **UniSE**: *A Unified, Prompt-Free, Autoregressive Speech Enhancement Framework Based on Decoder-only Language Models*  
 > **No task prompts required** — automatically adapts to various speech processing tasks via semantic understanding.
 
