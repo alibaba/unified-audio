@@ -1,0 +1,7 @@
+highpass_cutoff_freq: 40
+sample_rate: 16000 
+segment_duration: 2.4 # (s)
+max_val_duration: 12 # (s)
+latent_hop_length: 320
+ref_segment_duration: 6
+volume_normalize: true

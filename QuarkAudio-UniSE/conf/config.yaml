@@ -1,0 +1,160 @@
+# gpu config
+accelerator: gpu
+devices: [2]
+
+# log config
+log_dir: ./log
+resume: null  # if want to resume, specify ckpt path
+
+# inference
+ckpt_path: ./checkpoints/epoch=20-step=109367.ckpt
+
+# dataset config
+dataset_config:
+  train_kwargs:
+    batch_size: 32
+    cut_duration: [5.0, 5.0]  # 5.0 seconds
+    enroll_duration: 5.0
+    num_workers: 16  # dataloader workers
+    prefetch: 32
+    samples_per_epoch: 1000000
+    simulation_config: ./conf/simulation_train.yaml
+    speech_scp_base_dir: /voxbox
+    speech_scp_path:
+      - /emilia_zh_800000_subset.scp
+      - /librispeech.scp
+      - /mls_english_300000_subset.scp
+    noise_scp_path:
+      - /train/train_2021_dns2_noises.scp
+      - /train/fsd50k.scp
+      - /train/wham.scp
+      - /train/train_DESED_noise.scp
+      - /train/demand.scp
+      - /train/musan_noise.scp
+      - /train/train_disco_noises.scp
+      - /train/MUSDB18-HQ.scp
+      - /train/TUT_UAS_2018.scp
+    rir_scp_path: /rir_scp/simulated_rirs.scp
+  val_kwargs:
+    batch_size: 1
+    cut_duration: [5.0, 5.0]
+    enroll_duration: 5.0
+    num_workers: 1
+    prefetch: 1
+    samples_per_epoch: 1000
+    simulation_config: ./conf/simulation_train.yaml
+    speech_scp_base_dir: /voxbox
+    speech_scp_path:
+      - /emilia_zh_800000_subset.scp
+      - /librispeech.scp
+      - /mls_english_300000_subset.scp
+    noise_scp_path:
+      - /train/train_2021_dns2_noises.scp
+      - /train/fsd50k.scp
+      - /train/wham.scp
+      - /train/train_DESED_noise.scp
+      - /train/demand.scp
+      - /train/musan_noise.scp
+      - /train/train_disco_noises.scp
+      - /train/MUSDB18-HQ.scp
+      - /train/TUT_UAS_2018.scp
+    rir_scp_path: /rir_scp/simulated_rirs.scp
+  # test_kwargs:
+  #   batch_size: 1
+  #   num_workers: 1
+  #   prefetch: 1
+  #   mode: se  # se, tse, ss
+  #   data_enroll_dir: null
+  #   enroll_duration: 5.0
+  #   # data_src_dir: /DNS_Challenge/dns2020_test_set/synthetic/with_reverb/noisy
+  #   # data_tgt_dir: /DNS_Challenge/dns2020_test_set/synthetic/with_reverb/noisy
+  #   # data_src_dir: /DNS_Challenge/dns2020_test_set/synthetic/no_reverb/noisy
+  #   # data_tgt_dir: /DNS_Challenge/dns2020_test_set/synthetic/no_reverb/noisy
+  #   # data_src_dir: /urgent_challenge2025/blind_test/noisy
+  #   # data_tgt_dir: /urgent_challenge2025/blind_test/noisy
+  #   # data_src_dir: /PLC_Challenge/blind_test_2022/blind/lossy_signals
+  #   # data_tgt_dir: /PLC_Challenge/blind_test_2022/blind/lossy_signals
+  #   # data_src_dir: /bicodec_ar_se_250M/noisy_male
+  #   # data_tgt_dir: /bicodec_ar_se_250M/noisy_male
+  #   # data_src_dir: /urgent_challenge2025/nonblind_test/noisy
+  #   # data_tgt_dir: /urgent_challenge2025/nonblind_test/clean
+  #   # data_src_dir: /bone_speech_test
+  #   # data_tgt_dir: /bone_speech_test
+  # test_kwargs:
+  #   batch_size: 1
+  #   num_workers: 1
+  #   prefetch: 1
+  #   mode: tse  # se, tse, ss
+  #   enroll_duration: 5.0
+  #   data_enroll_dir: /LibriMix/LauraTSE/libri2mix_test/aux_s1
+  #   data_src_dir: /LibriMix/LauraTSE/libri2mix_test/mix_clean
+  #   data_tgt_dir: /LibriMix/LauraTSE/libri2mix_test/s1
+    # data_enroll_dir: /dataset_lauratse_demo/aux
+    # data_src_dir: /dataset_lauratse_demo/mix
+    # data_tgt_dir: /dataset_lauratse_demo/mix
+  test_kwargs:
+    batch_size: 1
+    num_workers: 1
+    prefetch: 1
+    mode: ss  # se, tse, ss
+    data_enroll_dir: null
+    enroll_duration: 5.0
+    # data_src_dir: /LibriMix/Libri2Mix/wav16k/min/test/mix_both
+    # data_tgt_dir: /LibriMix/Libri2Mix/wav16k/min/test/mix_both
+    data_src_dir: /WSJ0_2Mix/tt/mix
+    data_tgt_dir: /WSJ0_2Mix/tt/mix
+
+
+# training config
+max_epochs: 100
+val_check_interval: 0.5  # validate every 0.5 epochs
+gradient_clip_val: 5.0
+opt:
+  lr: 5.0e-4
+  # betas: [0.9, 0.999]
+sch:
+  warmup_steps: 2000
+  step_decay: 0.99998
+  min_factor: 0.02
+
+# model config and loss weights
+codec_ckpt_dir: ./model/bicodec/pretrained_ckpt
+llm_ckpt_path: /epoch=30-step=161447.ckpt
+
+
+stft_config:
+  hop_length: 320
+  win_length: 640
+  n_fft: 640
+  n_mels: 80
+
+
+llm_config:
+  num_tasks: 3
+  task_map:
+    se: 0
+    tse: 1
+    rtse: 2
+  feats_dim: 768
+  llm_base_config:
+    cond_dim: 80
+    global_size: 4096
+    semantic_size: 8192
+    hidden_size: 512
+    num_layers: 12
+    num_attention_heads: 8
+    dropout_p: 0.1
+    max_position_embeddings: 4096
+    label_smoothing: 0.1
+    conformer_params:
+      num_layers: 6
+      dim: 512
+      heads: 8 
+      dim_head: 64
+      depthwise_conv_kernel_size: 31
+      ff_mult: 4
+      dropout: 0.1
+      qk_norm: null
+      pe_attn_head: 1
+
+
