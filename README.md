@@ -1,7 +1,25 @@
 # QuarkAudio: An Open-Source Project to Unify Audio Processing and Generation
+<p align="center">
+  <img src="https://img.shields.io/badge/Paper-arXiv-red?logo=arXiv" alt="arXiv">
+  <img src="https://img.shields.io/badge/Demo-Page-blue?logo=github" alt="Demo">
+  <img src="https://img.shields.io/badge/Model-Hugging%20Face-yellow?logo=huggingface" alt="Hugging Face">
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
+</p>
 
-This project contains a series of works developed for audio (including speech, music, and general audio events) processing and generation, which helps reproducible research in the field of audio. The target of **QuarkAudio** is to explore a unified framework to handle **different audio processing and generation tasks**, including:
+<p align="center">
+  <a href="https://arxiv.org/abs/2510.20441"><img src="QuarkAudio.png" width="70%" /></a>
+</p>
+This project contains a series of works developed for audio (including speech, music, and general audio events) processing and generation, which helps reproducible research in the field of audio. 
+🚀 **Key Highlights**:
+- ✅ **Unified & Prompt-Free**: Handles multiple tasks without explicit instruction.
+- ⚙️ **Decoder-only AR-LM Backbone**: Leverages LLM-style autoregressive generation for speech token prediction.
+- 🔄 **End-to-End Compatible**: Integrates WavLM (feature extractor), BiCodec (discrete codec), and LM into one pipeline.
+- 🌍 **Multitask Support**: SE, SR, TSE, SS, and more — all in a single model.
 
+📄 **Paper**: [arXiv:2510.20441](https://arxiv.org/abs/2510.20441) | 🎤 **Listen**: [Demo Page](https://hyyan2k.github.io/UniSE/) | 🤗 **Model**: [Hugging Face Spaces](https://huggingface.co/spaces/QuarkAudio/)
+
+The target of **QuarkAudio** is to explore a unified framework to handle **different audio processing and generation tasks**, including:
+## 📋 Supported Tasks
 - **SR**: Speech Restoration (⛳ supported)
 - **TSE**: Target Speaker Extraction (⛳ supported)
 - **SS**: Speech Separation (⛳ supported)
