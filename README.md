@@ -7,8 +7,9 @@
 </p>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2510.20441"><img src="QuarkAudio.png" width="70%" /></a>
+  <a href="https://arxiv.org/abs/2510.20441"><img src="QuarkAudio.jpg" width="70%" /></a>
 </p>
+
 This project contains a series of works developed for audio (including speech, music, and general audio events) processing and generation, which helps reproducible research in the field of audio. 
 🚀 **Key Highlights**:
 - ✅ **Unified & Prompt-Free**: Handles multiple tasks without explicit instruction.
