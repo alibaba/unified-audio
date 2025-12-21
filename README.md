@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2510.20441"><img src="QuarkAudio.jpg" width="70%" /></a>
+  <a href="https://arxiv.org/abs/2510.26372"><img src="QuarkAudio.jpg" width="70%" /></a>
 </p>
 
 This project contains a series of works developed for audio (including speech, music, and general audio events) processing and generation, which helps reproducible research in the field of audio. 
@@ -17,7 +17,7 @@ This project contains a series of works developed for audio (including speech, m
 - 🔄 **End-to-End Compatible**: Integrates WavLM (feature extractor), BiCodec (discrete codec), and LM into one pipeline.
 - 🌍 **Multitask Support**: SE, SR, TSE, SS, and more — all in a single model.
 
-📄 **Paper**: [arXiv:2510.20441](https://arxiv.org/abs/2510.20441) | 🎤 **Listen**: [Demo Page](https://hyyan2k.github.io/UniSE/) | 🤗 **Model**: [Hugging Face Spaces](https://huggingface.co/spaces/QuarkAudio/)
+📄 **Paper**: [arXiv:2510.20441](https://arxiv.org/abs/2510.26372) | 🎤 **Listen**: [Demo Page](https://hyyan2k.github.io/UniSE/) | 🤗 **Model**: [Hugging Face Spaces](https://huggingface.co/spaces/QuarkAudio/)
 
 The target of **QuarkAudio** is to explore a unified framework to handle **different audio processing and generation tasks**, including:
 ## 📋 Supported Tasks
