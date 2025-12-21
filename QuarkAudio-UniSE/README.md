@@ -1,10 +1,15 @@
 # UniSE: A Unified Framework for Decoder-only Autoregressive LM-based Speech Enhancement
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Paper-arXiv-red?logo=arXiv" alt="arXiv">
-  <img src="https://img.shields.io/badge/Demo-Page-blue?logo=github" alt="Demo">
-  <img src="https://img.shields.io/badge/Model-Hugging%20Face-yellow?logo=huggingface" alt="Hugging Face">
-  <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
+  <a href="https://arxiv.org/abs/2510.20441">
+    <img src="https://img.shields.io/badge/Paper-ArXiv-red.svg" alt="Paper">
+  </a>
+  <a href="https://hyyan2k.github.io/UniSE/">
+    <img src="https://img.shields.io/badge/Demo-Page-blue.svg" alt="Demo">
+  </a>
+  <a href="https://huggingface.co/spaces/QuarkAudio/">
+    <img src="https://img.shields.io/badge/Model-Hugging%20Face-yellow.svg" alt="Hugging Face">
+  </a>
 </p>
 
 <p align="center">
