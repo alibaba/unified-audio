@@ -1,61 +1,63 @@
 # UniSE: A Unified Framework for Decoder-only Autoregressive LM-based Speech Enhancement
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2510.20441">
-    <img src="https://img.shields.io/badge/Paper-ArXiv-red.svg" alt="Paper">
-  </a>
-  <a href="https://github.com/hyyan2k/UniSE/">
-    <img src="https://img.shields.io/badge/Demo-Page-blue.svg" alt="Demo">
-  </a>
-  <a href="https://huggingface.co/spaces/QuarkAudio/">
-    <img src="https://img.shields.io/badge/Model-Hugging%20Face-yellow.svg" alt="Hugging Face">
-  </a>
+  <img src="https://img.shields.io/badge/Paper-arXiv-red?logo=arXiv" alt="arXiv">
+  <img src="https://img.shields.io/badge/Demo-Page-blue?logo=github" alt="Demo">
+  <img src="https://img.shields.io/badge/Model-Hugging%20Face-yellow?logo=huggingface" alt="Hugging Face">
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
 </p>
 
-![UniSE](UniSE.png)
+<p align="center">
+  <a href="https://arxiv.org/abs/2510.20441"><img src="QuarkAudio-UniSE.png" width="70%" /></a>
+</p>
+![UniSE](QuarkAudio-UniSE.png)
+> 🔊 **UniSE**: *A Unified, Prompt-Free, Autoregressive Speech Enhancement Framework Based on Decoder-only Language Models*  
+> **No task prompts required** — automatically adapts to various speech processing tasks via semantic understanding.
 
+🚀 **Key Highlights**:
+- ✅ **Unified & Prompt-Free**: Handles multiple tasks without explicit instruction.
+- ⚙️ **Decoder-only AR-LM Backbone**: Leverages LLM-style autoregressive generation for speech token prediction.
+- 🔄 **End-to-End Compatible**: Integrates WavLM (feature extractor), BiCodec (discrete codec), and LM into one pipeline.
+- 🌍 **Multitask Support**: SE, SR, TSE, SS, and more — all in a single model.
 
-## Introduction
+📄 **Paper**: [arXiv:2510.20441](https://arxiv.org/abs/2510.20441) | 🎤 **Listen**: [Demo Page](https://hyyan2k.github.io/UniSE/) | 🤗 **Model**: [Hugging Face Spaces](https://huggingface.co/spaces/QuarkAudio/)
 
-QuarkAudio-UniSE is a unified speech process model capable of handling multiple tasks without extra task prompts, including:
+---
 
-- **SR**: Speech Restoration (⛳ supported)
-- **SE**: Speech Enhancement (⛳ supported)
-- **TSE**: Target Speaker Extraction (⛳ supported)
-- **SS**: Speech Separation (⛳ supported)
-- **AEC**: Acoustic Echo Cancellation (⛳ developing)
+## 📋 Supported Tasks
 
-**QuarkAudio-UniSE**, a unified decoder-only LM-based framework to handle different SE tasks including speech restoration, target speaker extraction and speech separation. It takes input speech features as conditions and generates discrete tokens of the target speech using AR modeling, which facilitates a compatibility between distinct learning patterns of multiple tasks. Comprising **WavLM** with adapter to extract continuous speech feature, a discrete speech codec **BiCodec** to produce discrete tokens and reconstruct waveforms and a decoder-only LM backbone
-to model conditional probability
+| Task | Full Name | Status | Description |
+|------|-----------|--------|-------------|
+| **SR** | Speech Restoration | ✅ Stable | Recover clean speech from corrupted inputs (e.g., noise, reverb, packet loss) |
+| **SE** | Speech Enhancement | ✅ Stable | General-purpose denoising and clarity improvement |
+| **TSE** | Target Speaker Extraction | ✅ Stable | Extract target speaker using reference enrollment audio |
+| **SS** | Speech Separation | ✅ Stable | Separate mixed speakers or sound sources |
+| **AEC** | Acoustic Echo Cancellation | ⏳ Developing | Coming soon in next release |
 
-For more details, refer to our paper: [UniSE Paper](https://arxiv.org/abs/2510.20441)
+> 💡 Unlike traditional models requiring task-specific prompts or modules, **UniSE autonomously infers the task type** from input context — enabled by powerful LLM comprehension.
 
-## Demo
+---
 
-You can listen to the enhancement results on our [Demo Page](https://github.com/hyyan2k/UniSE/).
+## 🎯 Quick Start: Run Inference in 3 Minutes
 
-## Installation
-
-Checkpoints are at [huggingface](https://huggingface.co/ASLP-lab/LLaSE-G1).
-
-### 1. Clone the repository
+### 1. Clone Repository
 
 ```bash
-git https://github.com/alibaba/unified-audio.git
+git clone https://github.com/alibaba/unified-audio.git
 cd QuarkAudio-UniSE
-```
+
 
 ### 2. Create a Conda environment and install dependencies
 
 ```bash
-conda create -n llase python=3.10
-conda activate QuarkAudio
+conda create -n unise python=3.10
+conda activate unise
 pip install -r requirements.txt
 ```
 
-### 3. Download Pretrained Models
+### 3. Download Checkpoints
 
-LLaSE-G1 requires three additional **WavLM** and **BiCodec** pre-trained models and checkpoint of the middle LM on Huggingface to function properly. You can download three of them using the provided shell script:
+QuarkAudio-UniSE requires three additional **WavLM** and **BiCodec** pre-trained models and checkpoint of the middle LM on Huggingface to function properly. You can download three of them using the provided shell script:
 
 ```bash
 cd checkpoints
@@ -79,7 +81,8 @@ python ./train.py --config conf/config.yaml
 | `resume` | if want to resume, specify ckpt path                                                                                                  |
 | `simulation_config` | data simulate config                                                                                                                        |
 | `speech_scp_path`        | SCP of clean audio files                                                       |
-| `noise_scp_path`        | SCP of noise audio files                                                                    | `rir_scp_path`        | SCP of rir audio files                                                                       |
+| `noise_scp_path`        | SCP of noise audio files                                                                   
+ | `rir_scp_path`        | SCP of rir audio files                                                                       |
 | `mode`           | Task type: `se` (Noise Suppression,Speech Restoration,Packet Loss Concealment), `se` (Target Speaker Extraction), `SS` (Speech Separation). |
 
 
