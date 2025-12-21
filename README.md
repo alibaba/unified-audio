@@ -10,7 +10,8 @@
   <a href="https://arxiv.org/abs/2510.26372"><img src="QuarkAudio.jpg" width="70%" /></a>
 </p>
 
-This project contains a series of works developed for audio (including speech, music, and general audio events) processing and generation, which helps reproducible research in the field of audio. 
+This project contains a series of works developed for audio (including speech, music, and general audio events) processing and generation, which helps reproducible research in the field of audio. The target of **QuarkAudio** is to explore a unified framework to handle **different audio processing and generation tasks**, including:
+
 🚀 **Key Highlights**:
 - ✅ **Unified & Prompt-Free**: Handles multiple tasks without explicit instruction.
 - ⚙️ **Decoder-only AR-LM Backbone**: Leverages LLM-style autoregressive generation for speech token prediction.
@@ -19,7 +20,6 @@ This project contains a series of works developed for audio (including speech, m
 
 📄 **Paper**: [arXiv:2510.20441](https://arxiv.org/abs/2510.26372) | 🎤 **Listen**: [Demo Page](https://hyyan2k.github.io/UniSE/) | 🤗 **Model**: [Hugging Face Spaces](https://huggingface.co/spaces/QuarkAudio/)
 
-The target of **QuarkAudio** is to explore a unified framework to handle **different audio processing and generation tasks**, including:
 ## 📋 Supported Tasks
 
 | Task | Full Name | Status | Description |
