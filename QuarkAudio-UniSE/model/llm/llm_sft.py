@@ -136,7 +136,7 @@ class LLM_SFT(CustomLlamaModel):
 
         input_ids = torch.full((mixture.size(0), 1), self.global_sos_token_id, dtype=torch.long, device=mixture.device)
         output_ids = []
-        for _ in range(global_length):
+        for _ in range(global_length + 1):
             inputs_embeds = self.codec_embedding(input_ids)
             current_output = self.llm_forward(
                 inputs_embeds,
@@ -161,7 +161,7 @@ class LLM_SFT(CustomLlamaModel):
             )  # [batch_size, 1]
             output_ids.append(next_token_id)
             input_ids = next_token_id
-        global_ids = torch.cat(output_ids, dim=-1) - self.global_offset  #  [batch_size, global_length]
+        global_ids = torch.cat(output_ids[:-1], dim=-1) - self.global_offset  #  [batch_size, global_length]
 
         input_ids = torch.full((mixture.size(0), 1), self.semantic_sos_token_id, dtype=torch.long, device=mixture.device)
         output_ids = []
