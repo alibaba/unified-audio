@@ -1,0 +1,41 @@
+sampling_rate: 48000
+encoder_config:
+  dim: 1536
+  intermediate_dim: 4608
+  dimension: 512
+  n_fft: 1920
+  hop_length: 960
+  convnext_layers: 24
+  transformer_layers: 2
+  target_frame_rate: 12.5
+  causal: false
+decoder_config:
+  input_channels: 1024  # 512 * 2
+  dim: 1536
+  intermediate_dim: 4608
+  convnext_layers: 32
+  transformer_layers: 2
+  n_fft: 1920 # 2 * hop_length
+  hop_length: 960  # np.prod(ratios)
+  target_frame_rate: 12.5
+  causal: false
+quantizer_config:
+  dim: 512
+  codebook_size: 1024
+  num_quantizers: 16
+  decay: 0.99
+  kmeans_init: true
+  kmeans_iters: 50
+  quantize_dropout: false
+semantic_encoder_config:
+  input_channels: 768
+  encode_channels: 1536
+  out_channels: 512
+  channel_ratios: [1, 1, 1]
+  strides: [2, 1, 2]
+semantic_decoder_config:
+  code_dim: 512
+  output_channels: 768
+  decode_channels: 1536
+  channel_ratios: [1, 1, 1]
+  strides: [2, 1, 2]

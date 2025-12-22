@@ -23,7 +23,7 @@
 - 🔄 **End-to-End Compatible**: Integrates WavLM (feature extractor), BiCodec (discrete codec), and LM into one pipeline.
 - 🌍 **Multitask Support**: SE, SR, TSE, SS, and more — all in a single model.
 
-📄 **Paper**: [arXiv:2510.20441](https://arxiv.org/abs/2510.20441) | 🎤 **Listen**: [Demo Page](https://hyyan2k.github.io/UniSE/) | 🤗 **Model**: [Hugging Face Spaces](https://huggingface.co/spaces/QuarkAudio/)
+📄 **Paper**: [arXiv:2510.20441](https://arxiv.org/abs/2510.20441) | 🎤 **Listen**: [Demo Page](https://hyyan2k.github.io/UniSE/) | 🤗 **Model**: [Hugging Face Spaces]https://huggingface.co/QuarkAudio/QuarkAudio-UniSE/)
 
 ---
 
@@ -47,7 +47,7 @@
 ```bash
 git clone https://github.com/alibaba/unified-audio.git
 cd QuarkAudio-UniSE
-
+```
 
 ### 2. Create a Conda environment and install dependencies
 
@@ -85,14 +85,14 @@ python ./train.py --config conf/config.yaml
 | `speech_scp_path`        | SCP of clean audio files                                                       |
 | `noise_scp_path`        | SCP of noise audio files                                                                   
  | `rir_scp_path`        | SCP of rir audio files                                                                       |
-| `mode`           | Task type: `se` (Noise Suppression,Speech Restoration,Packet Loss Concealment), `se` (Target Speaker Extraction), `SS` (Speech Separation). |
+| `mode`           | Task type: `se` (Noise Suppression,Speech Restoration,Packet Loss Concealment), `tse` (Target Speaker Extraction), `SS` (Speech Separation). |
 
 
 ## Inference
 + Quick start
 The main inference script is **`test.py`**. The inference process consists of two stages:
 
-1. Extract the 6th-layer features from WavLM.
+1. Extract hidden states from all WavLM layers and obtain a single representation by averaging them across layers.
 2. Use the language model (LM) to predict speech tokens, and then decode them into audio using **BiCodec**.
 
 ### Running Inference
@@ -115,11 +115,11 @@ python test.py
 
 ## Results
 
-Samples processed by LLaSE-G1 can be found on our [Demo Page](https://github.com/hyyan2k/UniSE/).
+Samples processed by UniSE can be found on our [Demo Page](https://github.com/hyyan2k/UniSE/).
 
 ## Model Checkpoints
 
-Our pretrained model is available on [Hugging Face](https://huggingface.co/spaces/QuarkAudio/).
+Our pretrained model is available on [Hugging Face](https://huggingface.co/QuarkAudio/QuarkAudio-UniSE/).
 
 ## Hints
 
