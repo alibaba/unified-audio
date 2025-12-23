@@ -10,12 +10,17 @@
   <a href="https://huggingface.co/spaces/QuarkAudio/">
     <img src="https://img.shields.io/badge/Model-Hugging%20Face-yellow.svg" alt="Hugging Face">
   </a>
+  <a href="https://www.modelscope.cn/models/QuarkAudio/">
+    <img src="https://img.shields.io/badge/Model-%20%E9%AD%94%E6%90%AD-orange.svg" alt="ModelScope">
+</a>
+  
 </p>
 
 <p align="center">
   <a href="https://arxiv.org/abs/2510.26372"><img src="QuarkAudio.jpg" width="70%" /></a>
 </p>
 
+## Introduction
 This project contains a series of works developed for audio (including speech, music, and general audio events) processing and generation, which helps reproducible research in the field of audio. The target of **QuarkAudio** is to explore a unified framework to handle **different audio processing and generation tasks**, including:
 
 🚀 **Key Highlights**:
