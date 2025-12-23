@@ -57,12 +57,26 @@ These improvements significantly enhance **audio fidelity**, **temporal efficien
 pip install -r requirements.txt -->
 
 
-## Installation
-1. Install dependencies from requirement.txt via pypi or environment.yml via anaconda
-2. Feel free to download our pretrained model from [gdrive]() to <project_root>/checkpoints/hcodec_adaptive.ckpt
+---
 
-## Tokenizer
-+ Quick start
+## 🎯 Quick Start: Run Inference in 3 Minutes
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/alibaba/unified-audio.git
+cd QuarkAudio-HCodec
+```
+
+### 2. Create a Conda environment and install dependencies
+
+```bash
+conda create -n unise python=3.10
+conda activate unise
+pip install -r requirements.txt
+```
+
+## 3. Tokenizer
 
 ```bash
 #!/bin/bash
