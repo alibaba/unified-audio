@@ -1,7 +1,7 @@
 # QuarkAudio: An Open-Source Project to Unify Audio Processing and Generation
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2510.26372">
+  <a href="https://arxiv.org/pdf/2512.20151">
     <img src="https://img.shields.io/badge/Paper-ArXiv-red.svg" alt="Paper">
   </a>
   <a href="https://hyyan2k.github.io/UniSE/">
@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2510.26372"><img src="QuarkAudio.jpg" width="70%" /></a>
+  <a href="https://arxiv.org/pdf/2512.20151"><img src="QuarkAudio.jpg" width="70%" /></a>
 </p>
 
 ## Introduction
@@ -29,7 +29,7 @@ This project contains a series of works developed for audio (including speech, m
 - 🔄 **End-to-End Compatible**: Integrates WavLM/Hubert (feature extractor), H-Codec (discrete codec), and LM into one pipeline.
 - 🌍 **Multitask Support**: SE, SR, TSE, SS, EDIT, VC, LASS, TTA, and more — all in a single model.
 
-📄 **Paper**: [arXiv:2510.20441](https://arxiv.org/abs/2510.26372) | 🎤 **Listen**: [Demo Page](https://hyyan2k.github.io/UniSE/) | 🤗 **Model**: [Hugging Face Spaces](https://huggingface.co/spaces/QuarkAudio/)
+📄 **Paper**: [arXiv:2510.20441](https://arxiv.org/pdf/2512.20151) | 🎤 **Listen**: [Demo Page](https://hyyan2k.github.io/UniSE/) | 🤗 **Model**: [Hugging Face Spaces](https://huggingface.co/spaces/QuarkAudio/)
 
 ## 📋 Supported Tasks
 
@@ -50,6 +50,7 @@ In addition to the frameworks for specific audio tasks, **QuarkAudio** also prov
 
 
 ## 🚀 News
+- **2025/12/24**: We release [***QuarkAudio***](https://github.com/alibaba/unified-audio), an Open-Source Project to Unify Audio Processing and Generation.[![arXiv](https://img.shields.io/badge/arXiv-Paper-COLOR.svg)](https://arxiv.org/pdf/2512.20151). 
 - **2025/09/22**: We release [***UniSE***](https://github.com/hyyan2k/UniSE), a foundation model for unified speech generation. The system supports target speaker extraction, universal speech enhancement.[***demo***](https://hyyan2k.github.io/UniSE/), [![arXiv](https://img.shields.io/badge/arXiv-Paper-COLOR.svg)](https://arxiv.org/abs/2510.20441),Code will comming soon. 
 - **2025/10/26**: We release [***UniTok-Audio***](https://github.com/alibaba/unified-audio), The system supports target speaker extraction, universal speech enhancement, Speech Restoration, Voice Conversion, Language-Queried Audio Source Separation, Audio Tokenization,[***demo***](https://alibaba.github.io/unified-audio/), [![arXiv](https://img.shields.io/badge/arXiv-Paper-COLOR.svg)](https://arxiv.org/abs/2510.26372)
 ## key Works
