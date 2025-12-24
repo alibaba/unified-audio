@@ -1,0 +1,8 @@
+# Ignore Python cache files
+__pycache__/
+*.ckpt
+*.py[cod]
+*$py.class
+
+*.pt
+ossutil_output/
