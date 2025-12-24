@@ -1,6 +1,7 @@
 # HCodec-1.5 with adaptive frame rate
 ## Installation
 1. Install dependencies from requirement.txt via pypi
+2. Download pretrained weights from Huggingface &#x1F917;: [QuarkAudio/HCodec-1.5-adaptive](https://huggingface.co/QuarkAudio/HCodec-1.5-adaptive) and save them to ./checkpoints/ 
 
 ## Quick start
 + Generate tokens from audio
