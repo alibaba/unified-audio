@@ -4,9 +4,24 @@
 2. Download pretrained weights from Huggingface &#x1F917;: [QuarkAudio/HCodec-1.5-adaptive](https://huggingface.co/QuarkAudio/HCodec-1.5-adaptive) and save them to ./checkpoints/ 
 3. confirm the `ckpt_path` in file `conf/config_adaptive_v3.yaml` is valid
 
-## Quick start
-+ Generate tokens from audio
-+ Reconstruct audio from tokens
+## 🎯 Quick Start: Run Inference in 3 Minutes
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/alibaba/unified-audio.git
+cd QuarkAudio-HCodec
+```
+
+### 2. Create a Conda environment and install dependencies
+
+```bash
+conda create -n unise python=3.10
+conda activate unise
+pip install -r requirements.txt
+```
+
+## 3. Tokenizer
 
 ```bash
 #!/bin/bash
