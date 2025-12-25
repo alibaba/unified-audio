@@ -15,15 +15,14 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2510.20441"><img src="QuarkAudio-UniSE.png" width="70%" /></a>
 </p>
-🔊 **UniSE**: A Unified, Prompt-Free, Autoregressive Speech Enhancement Framework Based on Decoder-only Language Models
 
 🚀 **Key Highlights**:
 - ✅ **Unified & Prompt-Free**: Handles multiple tasks without explicit instruction.
 - ⚙️ **Decoder-only AR-LM Backbone**: Leverages LLM-style autoregressive generation for speech token prediction.
 - 🔄 **End-to-End Compatible**: Integrates WavLM (feature extractor), BiCodec (discrete codec), and LM into one pipeline.
-- 🌍 **Multitask Support**: SE, SR, TSE, SS, and more — all in a single model.
+- 🌍 **Multitask Support**: SR, TSE, SS, and more — all in a single model.
 
-📄 **Paper**: [arXiv:2510.20441](https://arxiv.org/abs/2510.20441)  | 🤗 **Model**: [Hugging Face Spaces]https://huggingface.co/QuarkAudio/QuarkAudio-UniSE/)
+📄 **Paper**: [arXiv:2510.20441](https://arxiv.org/abs/2510.20441)  | 🤗 **Model**: [Hugging Face Spaces](https://huggingface.co/QuarkAudio/QuarkAudio-UniSE/)
 
 ---
 
@@ -35,8 +34,6 @@
 | **TSE** | Target Speaker Extraction | ✅ Stable | Extract target speaker using reference enrollment audio |
 | **SS** | Speech Separation | ✅ Stable | Separate mixed speakers or sound sources |
 | **AEC** | Acoustic Echo Cancellation | ⏳ Developing | Coming soon in next release |
-
-> 💡 Unlike traditional models requiring task-specific prompts or modules, **UniSE autonomously infers the task type** from input context — enabled by powerful LLM comprehension.
 
 ---
 
@@ -85,7 +82,6 @@ python ./train.py --config conf/config.yaml
 | `speech_scp_path`        | SCP of clean audio files                                                       |
 | `noise_scp_path`        | SCP of noise audio files                                                                   
  | `rir_scp_path`        | SCP of rir audio files                                                                       |
-| `mode`           | Task type: `se` (Noise Suppression,Speech Restoration,Packet Loss Concealment), `tse` (Target Speaker Extraction), `SS` (Speech Separation). |
 
 
 ## Inference
@@ -93,7 +89,7 @@ python ./train.py --config conf/config.yaml
 The main inference script is **`test.py`**. The inference process consists of two stages:
 
 1. Extract hidden states from all WavLM layers and obtain a single representation by averaging them across layers.
-2. Use the language model (LM) to predict speech tokens, and then decode them into audio using **BiCodec**.
+2. Use the language model (LM) to predict speech tokens autoregressively, and then decode them into audio using **BiCodec**.
 
 ### Running Inference
 + Quick start
@@ -105,7 +101,7 @@ To run test.py, configure the parameters in `./conf/config.yaml`:
 | `enroll_duration` | Number of inference iterations.                                                                                                                                        |
 | `data_src_dir`        | Directory of processed audio files directory.                                                        |
 | `data_tgt_dir`        | Directory of processed audio files directory.                                                                                                                                    |
-| `mode`           | Task type: `se` (Noise Suppression,Speech Restoration,Packet Loss Concealment), `se` (Target Speaker Extraction), `SS` (Speech Separation). |
+| `mode`           | Task type: `se` (Speech Restoration), `tse` (Target Speaker Extraction), `ss` (). |
 
 Command to run inference:
 
