@@ -7,6 +7,9 @@
   <a href="https://huggingface.co/QuarkAudio/QuarkAudio-HCodec/">
     <img src="https://img.shields.io/badge/Model-Hugging%20Face-yellow.svg" alt="Hugging Face">
   </a>
+  <a href="https://www.modelscope.cn/models/QuarkAudio/QuarkAudio-HCodec/">
+    <img src="https://img.shields.io/badge/Model-%20%E9%AD%94%E6%90%AD-orange.svg" alt="ModelScope">
+</a>
 </p>
 
 <p align="center">
