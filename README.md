@@ -4,7 +4,7 @@
   <a href="https://arxiv.org/pdf/2512.20151">
     <img src="https://img.shields.io/badge/Paper-ArXiv-red.svg" alt="Paper">
   </a>
-  <a href="https://hyyan2k.github.io/UniSE/">
+  <a href="https://alibaba.github.io/unified-audio//">
     <img src="https://img.shields.io/badge/Demo-Page-blue.svg" alt="Demo">
   </a>
   <a href="https://huggingface.co/QuarkAudio/">
@@ -29,7 +29,7 @@ This project contains a series of works developed for audio (including speech, m
 - 🔄 **End-to-End Compatible**: Integrates WavLM/Hubert (feature extractor), H-Codec (discrete codec), and LM into one pipeline.
 - 🌍 **Multitask Support**: SE, SR, TSE, SS, EDIT, VC, LASS, TTA, and more — all in a single model.
 
-📄 **Paper**: [arXiv:2510.20441](https://arxiv.org/pdf/2512.20151) | 🎤 **Listen**: [Demo Page](https://hyyan2k.github.io/UniSE/) | 🤗 **Model**: [Hugging Face Spaces](https://huggingface.co/QuarkAudio//)
+📄 **Paper**: [arXiv:2510.20441](https://arxiv.org/pdf/2512.20151) | 🎤 **Listen**: [Demo Page](https://alibaba.github.io/unified-audio/) | 🤗 **Model**: [Hugging Face Spaces](https://huggingface.co/QuarkAudio//)
 
 ## 📋 Supported Tasks
 
