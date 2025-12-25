@@ -4,7 +4,7 @@
   <a href="https://arxiv.org/abs/2510.20441">
     <img src="https://img.shields.io/badge/Paper-ArXiv-red.svg" alt="Paper">
   </a>
-  <a href="https://huggingface.co/spaces/QuarkAudio/">
+  <a href="https://huggingface.co/QuarkAudio/QuarkAudio-UniSE/">
     <img src="https://img.shields.io/badge/Model-Hugging%20Face-yellow.svg" alt="Hugging Face">
   </a>
   <a href="https://www.modelscope.cn/models/QuarkAudio/QuarkAudio-UniSE/">
