@@ -13,8 +13,7 @@ import random
 from .bicodec import BiCodecTokenizer
 from .llm import LLM_SFT
 
-import os
-os.environ['HF_ENDPOINT'] = "https://hf-mirror.com"
+
 from transformers import AutoModel
 
 
@@ -27,9 +26,6 @@ class Model(pl.LightningModule):
         
         self.tokenizer = BiCodecTokenizer(model_dir=config['codec_ckpt_dir'])
         self.dnn = LLM_SFT(**config['llm_config'])
-
-        pretrained_ckpt = torch.load(config['llm_ckpt_path'], map_location='cpu')
-        self.load_state_dict(pretrained_ckpt['state_dict'], strict=False)
 
         self.semantic_model = AutoModel.from_pretrained("microsoft/wavlm-base-plus").eval()
         self.semantic_model.requires_grad_(False)

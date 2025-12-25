@@ -1,6 +1,6 @@
 # gpu config
 accelerator: gpu
-devices: [2]
+devices: [0]
 
 # log config
 log_dir: ./log
@@ -118,8 +118,7 @@ sch:
   min_factor: 0.02
 
 # model config and loss weights
-codec_ckpt_dir: ./model/bicodec/pretrained_ckpt
-llm_ckpt_path: /epoch=30-step=161447.ckpt
+codec_ckpt_dir: ./checkpoints
 
 
 stft_config:
