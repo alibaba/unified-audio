@@ -10,7 +10,7 @@
   <a href="https://huggingface.co/QuarkAudio/">
     <img src="https://img.shields.io/badge/Model-Hugging%20Face-yellow.svg" alt="Hugging Face">
   </a>
-  <a href="https://www.modelscope.cn/models/QuarkAudio/">
+  <a href="https://www.modelscope.cn/organization/QuarkAudio/">
     <img src="https://img.shields.io/badge/Model-%20%E9%AD%94%E6%90%AD-orange.svg" alt="ModelScope">
 </a>
   
