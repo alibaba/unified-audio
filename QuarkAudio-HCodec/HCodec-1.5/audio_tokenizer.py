@@ -20,10 +20,12 @@ from vq import Codec
 def load_sub_weights(checkpoint_path, prefix= 'generator.'):
     checkpoint = torch.load(checkpoint_path, map_location='cpu')
     if 'state_dict' in checkpoint:
-        checkpoint = checkpoint['state_dict']
+        state_dict = checkpoint['state_dict']
+    else:
+        state_dict = checkpoint
     
     if prefix is None:
-        return checkpoint
+        return state_dict
 
     filtered_state_dict = {}
     for key, value in state_dict.items():
@@ -38,7 +40,7 @@ class HCodecTokenizer(nn.Module):
     def __init__(self, **kwargs):
         super().__init__()
         self.config = kwargs.get('config', None)
-        self.model = Codec(config['encoder_config'], config['decoder_config'], config['quantizer_config'], config['adaptive_config'])
+        self.model = Codec(self.config['encoder_config'], self.config['decoder_config'], self.config['quantizer_config'], self.config['adaptive_config'])
         state_dict = load_sub_weights(self.config['ckpt_path'], prefix=None)
         self.model.load_state_dict(state_dict)
         self.model.eval()
@@ -92,8 +94,7 @@ def load_wav(info: str, fs=None):
         wav = wav[:1, :]  # 取第0通道
     return wav, fs_
 
-# test
-if __name__ == "__main__":
+def main():
     import soundfile as sf
     config_path = './conf/config_adaptive_v3.yaml'
 
@@ -115,5 +116,9 @@ if __name__ == "__main__":
     codes = tokenizer.tokenize(wav)
     wav_rec = tokenizer.detokenize(**codes)
     sf.write("./wav_rec.wav", wav_rec.squeeze(0).cpu().numpy(), 16000)
+    return 0
 
-
+# test
+if __name__ == "__main__":
+    import sys
+    sys.exit(main())
