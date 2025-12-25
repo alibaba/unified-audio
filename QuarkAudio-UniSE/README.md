@@ -56,17 +56,22 @@ pip install -r requirements.txt
 
 ### 3. Download Checkpoints
 
-QuarkAudio-UniSE requires three additional **WavLM** and **BiCodec** pre-trained models and checkpoint of the middle LM on Huggingface to function properly. You can download three of them using the provided shell script:
 
-```bash
-cd checkpoints
-bash download.sh
-```
-Additionally, download WavLM-Large.pt from this [URL](https://huggingface.co/microsoft/wavlm-base-plus) and put it at `./ckpt/WavLM-Large.pt` .
-
-Alternatively, you can download them manually and place them in the `./model/bicodec/` directory.
-
+UniSE needs the checkpoints of BiCodec, please download the files in https://huggingface.co/SparkAudio/Spark-TTS-0.5B and put them into `./checkpoints`
 After Downloading, the tree should be like this:
+
+```
+./checkpoints
+|-- BiCodec
+|   |-- config.yaml
+|   `-- model.safetensors
+|-- config.yaml
+`-- wav2vec2-large-xlsr-53
+    |-- README.md
+    |-- config.json
+    |-- preprocessor_config.json
+    `-- pytorch_model.bin
+```
 
 ## Train
 + Quick start
