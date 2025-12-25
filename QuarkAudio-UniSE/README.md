@@ -101,7 +101,7 @@ To run test.py, configure the parameters in `./conf/config.yaml`:
 | `enroll_duration` | Number of inference iterations.                                                                                                                                        |
 | `data_src_dir`        | Directory of processed audio files directory.                                                        |
 | `data_tgt_dir`        | Directory of processed audio files directory.                                                                                                                                    |
-| `mode`           | Task type: `se` (Speech Restoration), `tse` (Target Speaker Extraction), `ss` (). |
+| `mode`           | Task type: `se` (Speech Restoration), `tse` (Target Speaker Extraction), `ss` (Speech Separation). |
 
 Command to run inference:
 
@@ -114,9 +114,6 @@ python test.py
 
 Our pretrained model is available on [Hugging Face](https://huggingface.co/QuarkAudio/QuarkAudio-UniSE/).
 
-## Hints
-
-Our approach focuses on leveraging the LLM's comprehension capabilities to enable autonomous determination of task types, though this may exhibit instability in certain scenarios. A more stable and robust iteration will be released in the upcoming version.
 
 ## Citation
 
