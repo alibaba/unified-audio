@@ -13,8 +13,7 @@ import random
 from .bicodec import BiCodecTokenizer
 from .llm import LLM_SFT
 
-import os
-os.environ['HF_ENDPOINT'] = "https://hf-mirror.com"
+
 from transformers import AutoModel
 
 
