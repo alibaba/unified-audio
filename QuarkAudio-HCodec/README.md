@@ -4,7 +4,7 @@
   <a href="https://arxiv.org/pdf/2512.20151">
     <img src="https://img.shields.io/badge/Paper-ArXiv-red.svg" alt="Paper">
   </a>
-  <a href="https://huggingface.co/spaces/QuarkAudio/">
+  <a href="https://huggingface.co/QuarkAudio/QuarkAudio-HCodec/">
     <img src="https://img.shields.io/badge/Model-Hugging%20Face-yellow.svg" alt="Hugging Face">
   </a>
 </p>
@@ -22,7 +22,7 @@
 - ⚙️ **Multi-Sampling Rate (H-Codec-2.0)**: Extends the sampling rate from **16kHz to 48kHz** under a fixed frame rate, significantly improving audio fidelity and high-frequency detail preservation.
 - 🌍 **Unified Foundation**: Designed as a core component for multimodal LLMs, supporting diverse downstream tasks: TTS, VC, Editing, TTA, SE, and more.
 
-📄 **Paper**: [arXiv:2510.26372](https://arxiv.org/pdf/2512.20151) | 🎤 **Listen**: [Demo Page](https://hyyan2k.github.io/UniSE/) | 🤗 **Model**: [Hugging Face Spaces](https://huggingface.co/spaces/QuarkAudio/)
+📄 **Paper**: [arXiv:2510.26372](https://arxiv.org/pdf/2512.20151) | 🤗 **Model**: [Hugging Face Spaces](https://huggingface.co/QuarkAudio/QuarkAudio-HCodec/)
 
 ---
 

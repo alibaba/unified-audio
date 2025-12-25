@@ -25,6 +25,7 @@ pip install -r requirements.txt
 
 ```bash
 #!/bin/bash
+
 python audio_tokenizer.py
 ```
 

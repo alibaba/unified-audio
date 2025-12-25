@@ -4,13 +4,10 @@
   <a href="https://arxiv.org/abs/2510.20441">
     <img src="https://img.shields.io/badge/Paper-ArXiv-red.svg" alt="Paper">
   </a>
-  <a href="https://hyyan2k.github.io/UniSE/">
-    <img src="https://img.shields.io/badge/Demo-Page-blue.svg" alt="Demo">
-  </a>
   <a href="https://huggingface.co/spaces/QuarkAudio/">
     <img src="https://img.shields.io/badge/Model-Hugging%20Face-yellow.svg" alt="Hugging Face">
   </a>
-  <a href="https://www.modelscope.cn/models/QuarkAudio/">
+  <a href="https://www.modelscope.cn/models/QuarkAudio/QuarkAudio-UniSE/">
     <img src="https://img.shields.io/badge/Model-%20%E9%AD%94%E6%90%AD-orange.svg" alt="ModelScope">
   </a>
 </p>
@@ -26,7 +23,7 @@
 - 🔄 **End-to-End Compatible**: Integrates WavLM (feature extractor), BiCodec (discrete codec), and LM into one pipeline.
 - 🌍 **Multitask Support**: SE, SR, TSE, SS, and more — all in a single model.
 
-📄 **Paper**: [arXiv:2510.20441](https://arxiv.org/abs/2510.20441) | 🎤 **Listen**: [Demo Page](https://hyyan2k.github.io/UniSE/) | 🤗 **Model**: [Hugging Face Spaces]https://huggingface.co/QuarkAudio/QuarkAudio-UniSE/)
+📄 **Paper**: [arXiv:2510.20441](https://arxiv.org/abs/2510.20441)  | 🤗 **Model**: [Hugging Face Spaces]https://huggingface.co/QuarkAudio/QuarkAudio-UniSE/)
 
 ---
 
@@ -116,9 +113,6 @@ Command to run inference:
 python test.py
 ```
 
-## Results
-
-Samples processed by UniSE can be found on our [Demo Page](https://github.com/hyyan2k/UniSE/).
 
 ## Model Checkpoints
 
