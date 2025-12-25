@@ -10,7 +10,7 @@
 
 ```bash
 git clone https://github.com/alibaba/unified-audio.git
-cd QuarkAudio-HCodec
+cd unified-audio/QuarkAudio-HCodec/HCodec-1.5
 ```
 
 ### 2. Create a Conda environment and install dependencies
