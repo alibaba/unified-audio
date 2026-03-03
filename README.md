@@ -31,6 +31,11 @@ This project contains a series of works developed for audio (including speech, m
 
 📄 **Paper**: [arXiv:2510.20441](https://arxiv.org/pdf/2512.20151) | 🎤 **Listen**: [Demo Page](https://alibaba.github.io/unified-audio/) | 🤗 **Model**: [Hugging Face Spaces](https://huggingface.co/QuarkAudio/)
 
+---
+![GitHub Repo stars](https://img.shields.io/github/stars/modelscope/ClearerVoice-Studio) Please leave your ⭐ on our GitHub to support this community project！
+
+记得点击右上角的星星⭐来支持我们一下，您的支持是我们更新模型的最大动力！
+
 ## 📋 Supported Tasks
 
 | Task | Full Name | Status | Description |
@@ -55,4 +60,24 @@ In addition to the frameworks for specific audio tasks, **QuarkAudio** also prov
 - **2025/10/26**: We release ***UniTok-Audio***, The system supports target speaker extraction, universal speech enhancement, Speech Restoration, Voice Conversion, Language-Queried Audio Source Separation, Audio Tokenization,[***demo***](https://alibaba.github.io/unified-audio/), [![arXiv](https://img.shields.io/badge/arXiv-Paper-COLOR.svg)](https://arxiv.org/abs/2510.26372). Code will comming soon.
 - **2025/09/22**: We release ***UniSE***, a foundation model for unified speech generation. The system supports target speaker extraction, universal speech enhancement. [![arXiv](https://img.shields.io/badge/arXiv-Paper-COLOR.svg)](https://arxiv.org/abs/2510.20441). The code is publicly available at: [UniSE](https://github.com/alibaba/unified-audio/tree/main/QuarkAudio-UniSE), along with pretrained models and inference examples.
 
-    
+
+## Citation
+If you use this code or result in your paper, please cite our work as:
+```tex
+@misc{liu2025quarkaudiotechnicalreport,
+      title={QuarkAudio Technical Report}, 
+      author={Chengwei Liu and Haoyin Yan and Shaofei Xue and Xiaotao Liang and Xiaofu Chen and Bin Gong and Zheng Xue and Gang Song},
+      year={2025},
+      eprint={2512.20151},
+      archivePrefix={arXiv},
+      primaryClass={eess.AS},
+      url={https://arxiv.org/abs/2512.20151}, 
+}
+```
+
+## License
+<!-- TODO: check and add license -->
+QuarkAudio is released under the Apache 2.0 license.
+
+## Star History
+[![Star History Chart](https://api.star-history.com/svg?repos=alibaba/unified-audio&type=date&legend=top-left&title=QuarkAudio)](https://www.star-history.com/#alibaba/unified-audio&type=date&legend=top-left)
