@@ -1,0 +1,139 @@
+# gpu config
+accelerator: gpu
+devices: [0]
+
+# inference config
+ckpt_path: ./checkpoints/hcodec_spatial_mono2stereo.ckpt
+wav2vec2_path: facebook/wav2vec2-large-xlsr-53
+
+# model config
+encoder_config:
+  ratios: [2, 4, 5, 8]   
+  encoder:
+    causal: false 
+    n_residual_layers: 1
+    norm: weight_norm
+    pad_mode: reflect
+    lstm: 6   
+    dimension: 512
+    channels: 1
+    n_filters: 32
+    ratios: [2, 4, 5, 8]
+    activation: ELU     
+    kernel_size: 7
+    residual_kernel_size: 3
+    last_kernel_size: 7
+    dilation_base: 2
+    true_skip: false
+    compress: 2
+    use_transformer: true 
+  semantic_encoder:
+    input_channels: 1024
+    encode_channels: 1024
+    out_channels: 512
+    channel_ratios: [1, 1]
+    strides: [2, 1]
+  spatial_encoder:
+    causal: false 
+    n_residual_layers: 1
+    norm: weight_norm
+    pad_mode: reflect
+    lstm: 6   
+    dimension: 512
+    channels: 1
+    n_filters: 32
+    ratios: [2, 4, 5, 8]
+    activation: ELU     
+    kernel_size: 7
+    residual_kernel_size: 3
+    last_kernel_size: 7
+    dilation_base: 2
+    true_skip: false
+    compress: 2
+    use_transformer: true 
+
+decoder_config:
+  decoder:
+    input_channels: 1024
+    dim: 1024
+    intermediate_dim: 3072
+  semantic_decoder:
+    code_dim: 512
+    output_channels: 1024
+    decode_channels: 1024
+    channel_ratios: [1, 1]
+    strides: [2, 1]
+
+quantizer_config:
+  quantizer:
+    dim: 512
+    codebook_size: 1024
+    num_quantizers: 4
+    decay: 0.99
+    kmeans_init: true
+    kmeans_iters: 50
+    quantize_dropout: true
+  semantic_quantizer:
+    dim: 512
+    codebook_size: 1024
+    num_quantizers: 4
+    decay: 0.99
+    kmeans_init: true
+    kmeans_iters: 50
+    quantize_dropout: true
+  spatial_quantizer:
+    dim: 512
+    codebook_size: 1024
+    num_quantizers: 4
+    decay: 0.99
+    kmeans_init: true
+    kmeans_iters: 50
+    quantize_dropout: true
+
+adaptive_config: 
+  training: true
+  use_similarity_alignment: true
+  use_dynamic_similarity_threshold: true
+  infer_using_dynamic_threshold: false
+  similarity_threshold: 0.91
+  similarity_threshold_lower: 0.5
+  similarity_threshold_upper: 1.0
+  max_tokens_per_group: 8
+  manual_threshold: null
+  use_query_token_aggregator: true
+  aggregators:
+    semantic_aggregator:
+      dim: 512
+      in_out_dim: 512
+      num_heads: 8
+      num_layers: 32
+      dim_feedforward: 2048
+      causal: false
+      use_mean_pooling_init: true
+      context_frames: 16
+    acoustic_aggregator:
+      dim: 512
+      in_out_dim: 512
+      num_heads: 8
+      num_layers: 32
+      dim_feedforward: 2048
+      causal: false
+      use_mean_pooling_init: true
+      context_frames: 16
+  use_bottleneck_transformer: true
+  transformer_kwargs:
+    d_model: 1024
+    num_heads: 8
+    num_layers: 32
+    causal: false
+    layer_scale: 0.01
+    context: 16
+    conv_layout: true
+    max_period: 10000
+    gating: "none"
+    norm: "layer_norm"
+    positional_embedding: "rope"
+    dim_feedforward: 2048
+    input_dimension: 1024
+    output_dimensions:
+      - 1024

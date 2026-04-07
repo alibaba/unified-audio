@@ -1,4 +1,4 @@
-# QuarkAudio: An Open-Source Project to Unify Audio Processing and Generation
+# QuarkAudio: An Open-Source Project to Unify Audio Processing and Generation. 
 
 <p align="center">
   <a href="https://arxiv.org/pdf/2512.20151">

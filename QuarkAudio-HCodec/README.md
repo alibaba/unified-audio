@@ -23,6 +23,7 @@
 - ✅ **Dual-Stream Tokenization**: Separately quantizes acoustic and semantic features into independent codebooks — preserving both signal fidelity and linguistic content.
 - 🔄 **Dynamic Frame Rate (H-Codec-1.5)**: Introduces an adaptive temporal resolution mechanism built upon H-Codec-1.0, enabling variable frame rates based on content complexity.
 - ⚙️ **Multi-Sampling Rate (H-Codec-2.0)**: Extends the sampling rate from **16kHz to 48kHz** under a fixed frame rate, significantly improving audio fidelity and high-frequency detail preservation.
+- 🎧 **Spatial Audio (H-Codec-Spatial)**: Supports stereo encoding/decoding and mono-to-stereo spatialization conditioned on spatial metadata (azimuth, elevation, distance).
 - 🌍 **Unified Foundation**: Designed as a core component for multimodal LLMs, supporting diverse downstream tasks: TTS, VC, Editing, TTA, SE, and more.
 
 📄 **Paper**: [arXiv:2510.26372](https://arxiv.org/pdf/2512.20151) | 🤗 **Model**: [Hugging Face Spaces](https://huggingface.co/QuarkAudio/QuarkAudio-HCodec/)
@@ -40,6 +41,7 @@ We extend the original H-Codec (*aka* H-Codec-1.0) in *UniTok-Audio (Liu et al.,
 | **H-Codec-1.0** | Dual-stream quantization          | 16 kHz        | Fixed          |
 | **H-Codec-1.5** | Dynamic frame rate adaptation     | 16 kHz        | Adaptive       |
 | **H-Codec-2.0** | Full-bandwidth 48kHz support      | 48 kHz        | Fixed          |
+| **H-Codec-Spatial** | Stereo codec & mono-to-stereo spatialization | 16 kHz | Fixed |
 
 These improvements significantly enhance **audio fidelity**, **temporal efficiency**, and **applicability** across speech, music, and general audio.
 
