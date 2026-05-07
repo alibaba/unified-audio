@@ -23,13 +23,17 @@
 
 ## Architecture
 
-| Component | Description |
-|-----------|-------------|
-| Acoustic Encoder | Conv1D-based encoder with LSTM and Transformer layers |
-| Semantic Encoder | Processes wav2vec2 features into semantic codebook space |
-| Spatial Encoder | Encodes spatial channel differences |
-| Quantizer | 3 groups: acoustic (4 codebooks), semantic (4 codebooks), spatial (2-4 codebooks) |
-| Decoder | Bottleneck Transformer decoder reconstructing stereo waveform |
+### Stereo Codec
+
+<p align="center">
+  <img src="Hcodec-spatial_codec.png" width="80%" />
+</p>
+
+### Mono-to-Stereo Spatialization
+
+<p align="center">
+  <img src="Hcodec-spatial_generate.png" width="80%" />
+</p>
 
 ## Quick Start
 
