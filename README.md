@@ -82,4 +82,4 @@ If you use this code or result in your paper, please cite our work as:
 QuarkAudio is released under the Apache 2.0 license.
 
 ## Star History
-[![Star History Chart](https://api.star-history.com/svg?repos=alibaba/unified-audio&type=date&legend=top-left&title=QuarkAudio)](https://www.star-history.com/#alibaba/unified-audio&type=date&legend=top-left)
+[![Star History Chart](https://star-history.dera.page/svg?repos=alibaba/unified-audio&type=date&legend=top-left&title=QuarkAudio)](https://star-history.dera.page/#alibaba/unified-audio&type=date&legend=top-left)
